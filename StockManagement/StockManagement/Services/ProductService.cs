@@ -13,9 +13,9 @@ public class ProductService : IProductService
         _repository = repository;
     }
 
-    public Product[] GetAll()
+    public async Task<Product[]> GetAllAsync()
     {
-        return _repository.GetAll();
+        return await _repository.GetAllAsync();
     }
 
     public Product GetProductById(int id)

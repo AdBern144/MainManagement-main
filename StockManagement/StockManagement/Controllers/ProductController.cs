@@ -18,9 +18,9 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<ProductViewModel[]> Get()
+    public async Task<ActionResult<ProductViewModel[]>> GetAsync()
     {
-        var products = _productService.GetAll();
+        var products = await _productService.GetAllAsync();
         var viewModel = Mapper(products);
 
         return viewModel;
@@ -30,7 +30,7 @@ public class ProductController : ControllerBase
     public ActionResult<ProductViewModel> Get(int id)
     {
         var product = _productService.GetProductById(id);
-
+        
         if (product != null)
         {
             return Ok(product);

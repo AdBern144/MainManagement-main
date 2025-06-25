@@ -1,0 +1,9 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    
+    a {
+        cursor: pointer;
+        margin: 10px;
+    }
+}

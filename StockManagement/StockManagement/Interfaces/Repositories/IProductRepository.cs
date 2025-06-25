@@ -4,7 +4,7 @@ namespace StockManagement.Interfaces.Repositories;
 
 public interface IProductRepository
 {
-    Product[] GetAll();
+    Task<Product[]> GetAllAsync();
     Product GetById(int id);
     Product CreateProduct(Product product);
     void UpdateProduct(Product product);

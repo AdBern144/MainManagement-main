@@ -4,7 +4,7 @@ namespace StockManagement.Interfaces.Services;
 
 public interface IProductService
 {
-    Product[] GetAll();
+    Task<Product[]> GetAllAsync();
     Product GetProductById(int id);
     Product Create(Product product);
     void Delete(int id);
