@@ -1,0 +1,34 @@
+<form [formGroup]="customerForm" class="customer-form" *ngIf="customerForm">
+     <h1>Customer aanpassen</h1>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Customer naam</mat-label>
+        <input matInput type="text" formControlName="name" required class="input-name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" required class="input      -email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Telefoonnummer</mat-label>
+        <input matInput type="tel" formControlName="phone" required class="input-phone" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Adres</mat-label>
+        <input matInput type="text" formControlName="address" required class="input-address" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Postcode</mat-label>
+        <input matInput type="text" formControlName="postalCode" required class="input-postal-code" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Woonplaats</mat-label>
+        <input matInput type="text" formControlName="city" required class="input-city" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Land</mat-label>
+        <input matInput type="text" formControlName="country" class="input-country" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="!customerForm.valid" (click)="updateCustomer()">
+        Customer aanpassen
+    </button>
+</form>

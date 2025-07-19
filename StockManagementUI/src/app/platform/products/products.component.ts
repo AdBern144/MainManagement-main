@@ -5,10 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ProductService } from '../../core/services/product.service';
 import { ProductViewModel } from '../../core/dataContracts/productViewModel';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule, RouterModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, RouterModule, MatButtonModule, MatIconModule, MatTooltipModule],
   providers: [ProductService],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'

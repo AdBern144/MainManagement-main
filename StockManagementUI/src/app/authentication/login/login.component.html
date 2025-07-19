@@ -1,8 +1,9 @@
-<form [formGroup]="loginForm" *ngIf="loginForm">
-    <h1>Login</h1>
+<div class="login-container">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" *ngIf="loginForm">
     <mat-form-field appearance="fill">
-        <mat-label>Gebruikersnaam:</mat-label>
-        <input matInput type="text" formControlName="userName" required />
+        <mat-label>Email:</mat-label>
+        <input matInput type="email" formControlName="email" required />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -10,7 +11,25 @@
         <input matInput type="password" formControlName="password" required />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">
-        Login
-    </button>
+    <button mat-raised-button color="primary" [disabled]="!loginForm.valid || isLoading" (click)="login()">
+ @if (!isLoading) {
+  Login
+} @else {
+  <mat-progress-spinner
+    diameter="24"
+    mode="indeterminate"
+    color="accent"
+    [style.vertical-align]="'middle'"
+    [style.marginRight.px]="0"
+    [style.marginLeft.px]="0"
+    [style.display]="'inline-block'">
+  </mat-progress-spinner>
+}
+</button>
+
+    <a [routerLink]="['/register']" class="register-link">
+        Nog geen account? Registreer hier!
+    </a>
+
 </form>
+</div>

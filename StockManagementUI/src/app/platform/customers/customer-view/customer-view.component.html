@@ -1,0 +1,39 @@
+<div class="customer-view mat-elevation-z4" style="padding: 24px; border-radius: 8px; background: var(--background, #fff);">
+    <h2 class="mat-headline-5" color="primary">Customer Details</h2>
+    <div *ngIf="customer" class="mat-body-1">
+        <mat-list>
+            <mat-list-item>
+                <span class="mat-body-1">Naam:</span>
+                <span class="mat-body-1">{{ customer.name }}</span>
+            </mat-list-item>
+            <mat-list-item>
+                <span class="mat-body-1">Email:</span>
+                <span class="mat-body-1">{{ customer.email }}</span>
+            </mat-list-item>
+            <mat-list-item>
+                <span class="mat-body-1">Telefoonnummer:</span>
+                <span class="mat-body-1">{{ customer.phone }}</span>
+            </mat-list-item>
+            <mat-list-item>
+                <span class="mat-body-1">Adres:</span>
+                <span class="mat-body-1">{{ customer.address }}</span>
+            </mat-list-item>
+            <mat-list-item>
+                <span class="mat-body-1">Postcode:</span>
+                <span class="mat-body-1">{{ customer.postalCode }}</span>
+            </mat-list-item>
+            <mat-list-item>
+                <span class="mat-body-1">Woonplaats:</span>
+                <span class="mat-body-1">{{ customer.city }}</span>
+            </mat-list-item>
+            <mat-list-item *ngIf="customer.country">
+                <span class="mat-body-1">Land:</span>
+                <span class="mat-body-1">{{ customer.country }}</span>
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <div *ngIf="!customer" class="mat-body-1">
+        <mat-progress-spinner mode="indeterminate" diameter="32" color="primary"></mat-progress-spinner>
+        <span style="margin-left: 16px;">Laden...</span>
+    </div>
+</div>

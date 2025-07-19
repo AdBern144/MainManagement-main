@@ -6,37 +6,42 @@ namespace StockManagement.Services;
 
 public class ProductService : IProductService
 {
-    private readonly IProductRepository _repository;
+    private readonly IProductRepository _productRepository;
+    private readonly IUserService _userService;
 
-    public ProductService(IProductRepository repository)
+    public ProductService(IProductRepository productRepository, IUserService userService)
     {
-        _repository = repository;
+        _productRepository = productRepository;
+        _userService = userService;
     }
 
-    public async Task<Product[]> GetAllAsync()
+    public async Task<Product[]> GetAsync()
     {
-        return await _repository.GetAllAsync();
+        return await _productRepository.GetAsync();
     }
 
-    public Product GetProductById(int id)
+    public async Task<Product> GetAsync(int id)
     {
-        return _repository.GetById(id);
+        return await _productRepository.GetAsync(id);
     }
 
-    public Product Create(Product product)
+    public async Task<Product> CreateAsync(Product product)
     {
-        var createdProduct = _repository.CreateProduct(product);
+        var userIdFromToken = _userService.GetCurrentUser().Id;
+        product.UserId = userIdFromToken;
+
+        var createdProduct = await _productRepository.CreateAsync(product);
         return createdProduct;
     }
 
-    public void Delete(int id)
+    public async Task DeleteAsync(int id)
     {
-        _repository.DeleteById(id);
+        await _productRepository.DeleteAsync(id);
     }
 
-    public void Update(Product product)
+    public async Task UpdateAsync(Product product)
     {
-        var dbModel = _repository.GetById(product.Id);
+        var dbModel = await _productRepository.GetAsync(product.Id);
 
         dbModel.Name = product.Name;
         dbModel.Description = product.Description;
@@ -44,6 +49,6 @@ public class ProductService : IProductService
         dbModel.DiscountPercentage = product.DiscountPercentage;
         dbModel.Stock = product.Stock;
 
-        _repository.UpdateProduct(dbModel);
+        await _productRepository.UpdateAsync(dbModel);
     }
 }

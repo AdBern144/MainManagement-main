@@ -10,5 +10,5 @@ public class User
     public string? ResetHashCode { get; set; }
 
     public required ICollection<Product> Products { get; set; }
-    //    public required ICollection<Customer> Customers { get; set; }
+    public required ICollection<Customer> Customers { get; set; }
 }

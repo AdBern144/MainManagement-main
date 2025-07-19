@@ -22,6 +22,52 @@ namespace StockManagement.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("StockManagement.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("StockManagement.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -87,6 +133,17 @@ namespace StockManagement.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("StockManagement.Models.Customer", b =>
+                {
+                    b.HasOne("StockManagement.Models.User", "User")
+                        .WithMany("Customers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("StockManagement.Models.Product", b =>
                 {
                     b.HasOne("StockManagement.Models.User", "User")
@@ -100,6 +157,8 @@ namespace StockManagement.Migrations
 
             modelBuilder.Entity("StockManagement.Models.User", b =>
                 {
+                    b.Navigation("Customers");
+
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

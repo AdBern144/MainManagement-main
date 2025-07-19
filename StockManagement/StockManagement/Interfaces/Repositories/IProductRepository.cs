@@ -4,9 +4,9 @@ namespace StockManagement.Interfaces.Repositories;
 
 public interface IProductRepository
 {
-    Task<Product[]> GetAllAsync();
-    Product GetById(int id);
-    Product CreateProduct(Product product);
-    void UpdateProduct(Product product);
-    void DeleteById(int id);
+    Task<Product[]> GetAsync();
+    Task<Product> GetAsync(int id);
+    Task<Product> CreateAsync(Product product);
+    Task UpdateAsync(Product product);
+    Task DeleteAsync(int id);
 }

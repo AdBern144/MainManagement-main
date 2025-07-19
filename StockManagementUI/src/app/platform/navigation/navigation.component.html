@@ -1,9 +1,10 @@
 <nav class="sidebar">
     <div class="logo">
         <h2>Stock management</h2>
+        <h3>{{user.email}}</h3>
     </div>
-    <a routerLink="/">Dashboard</a>
-    <a routerLink="/">Categorien</a>
+    <a routerLink="/platform/dashboard">Dashboard</a>
     <a routerLink="/platform/products">Producten</a>
-    <a routerLink="/">Klanten</a>
+    <a routerLink="/platform/customers">Klanten</a>
+    <a (click)="loggoff()">Uitloggen</a>
 </nav>

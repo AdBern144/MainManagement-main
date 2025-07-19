@@ -4,9 +4,9 @@ namespace StockManagement.Interfaces.Repositories;
 
 public interface IUserRepository
 {
-    User? GetByEmail(string email);
-    User? GetById(int id);
-    User CreateUser(User user);
-    void UpdateUser(User user);
-    void DeleteById(int id);
+    User? Get(string email);
+    User? Get(int id);
+    Task<User> CreateAsync(User user);
+    void Update(User user);
+    void Delete(int id);
 }

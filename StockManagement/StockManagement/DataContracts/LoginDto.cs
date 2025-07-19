@@ -1,7 +1,11 @@
-﻿namespace StockManagement.DataContracts;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StockManagement.DataContracts;
 
 public class LoginDto
 {
-    public required string UserName { get; set; }
+    [Required(AllowEmptyStrings = false, ErrorMessage = "Email required")]
+    public required string Email { get; set; }
+    [Required(AllowEmptyStrings = false, ErrorMessage = "Password required")]
     public required string Password { get; set; }
 }

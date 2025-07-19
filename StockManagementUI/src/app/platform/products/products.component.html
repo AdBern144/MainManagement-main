@@ -1,7 +1,7 @@
 <div class="products-container">
     <div class="products-header">
         <h1>Products</h1>
-        <button mat-raised-button color="primary" routerLink="/platform/products/create">Nieuw Product</button>
+        <button mat-raised-button color="primary" routerLink="/platform/products/create" matTooltip="Nieuw product aanmaken">Nieuw Product</button>
     </div>
     <div class="products-list">
         <table class="table">
@@ -19,13 +19,13 @@
                     <td>{{ product.discountedPrice | currency }}</td>
                     <td>{{ product.stock }}</td>
                     <td>
-                        <button mat-icon-button color="primary" [routerLink]="['/platform/products/edit', product.id]">
+                        <button mat-icon-button color="primary" [routerLink]="['/platform/products/edit', product.id]" matTooltip="Bewerk product">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button mat-icon-button color="primary" [routerLink]="['/platform/products', product.id]">
+                        <button mat-icon-button color="primary" [routerLink]="['/platform/products', product.id]" matTooltip="Bekijk product">
                             <mat-icon>visibility</mat-icon>
                         </button>
-                        <button mat-icon-button color="primary" (click)="deleteProduct(product.id)">
+                        <button mat-icon-button color="primary" (click)="deleteProduct(product.id)" matTooltip="Verwijder product">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </td>

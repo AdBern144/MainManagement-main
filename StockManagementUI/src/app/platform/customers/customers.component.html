@@ -1,0 +1,43 @@
+<div class="customers-container">
+    <div class="customers-header">
+        <h1>Customers</h1>
+        <button mat-raised-button color="primary" routerLink="/platform/customers/create">Nieuw Customer</button>
+    </div>
+    <div class="customers-list">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Email</th>
+                    <th>Telefoon</th>
+                    <th>Adres</th>
+                    <th>Postcode</th>
+                    <th>Stad</th>
+                    <th>Land</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers">
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.address }}</td>
+                    <td>{{ customer.postalCode }}</td>
+                    <td>{{ customer.city }}</td>
+                    <td>{{ customer.country }}</td>
+                    <td>
+                        <button mat-icon-button color="primary" [routerLink]="['/platform/customers/edit', customer.id]">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="primary" [routerLink]="['/platform/customers', customer.id]">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+                        <button mat-icon-button color="primary" (click)="deleteCustomer(customer.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
